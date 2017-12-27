@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gatewat>
+    <services>
+        <service serviceId="1" serviceName="test">
+            <nodes>
+                <node ip="192.168.1.1" port="1111" heathCheckUrl="/heathCheck"/>
+            </nodes>
+        </service>
+    </services>
+</gatewat>

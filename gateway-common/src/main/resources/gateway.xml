@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <gatewat>
     <services>
-        <service serviceId="1" serviceName="test">
+        <service serviceId="1" serviceName="test" heathCheckUrl="/hello" domain="" proxyPort="" type="HTTP">
             <nodes>
-                <node ip="192.168.164.23" port="10010" heathCheckUrl="/hello"/>
+                <node ip="192.168.164.23" port="10010" />
             </nodes>
         </service>
     </services>

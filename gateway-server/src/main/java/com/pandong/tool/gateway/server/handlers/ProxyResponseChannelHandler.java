@@ -5,6 +5,10 @@ import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @author pandong
+ */
+
 @Slf4j
 public class ProxyResponseChannelHandler extends SimpleChannelInboundHandler<HttpObject> {
   @Override

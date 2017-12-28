@@ -10,6 +10,9 @@ import java.util.Map;
 
 import static com.pandong.tool.gateway.common.GatewayConverter.ROOT_NAME_GATEWAY;
 
+/**
+ * @author pandong
+ */
 public class Global {
   private static final XStream xstream = new XStream();
   public static final String USER_HOME = System.getProperty("user.home");

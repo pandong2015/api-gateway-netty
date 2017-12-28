@@ -5,6 +5,9 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @author pandong
+ */
 @Slf4j
 public class HeathCheckIdleHandler extends IdleStateHandler {
   public static final int DEFAULT_READER_IDLE_TIME_SECONDS = 120;

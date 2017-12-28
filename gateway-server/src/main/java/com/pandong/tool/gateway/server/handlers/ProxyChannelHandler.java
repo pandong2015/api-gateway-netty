@@ -14,6 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.InetSocketAddress;
 import java.util.List;
 
+/**
+ * @author pandong
+ */
+
 @Slf4j
 public class ProxyChannelHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
   @Override

@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * @author pandong
+ */
 @Slf4j
 public class GatewayCounter {
   public enum StreamType {

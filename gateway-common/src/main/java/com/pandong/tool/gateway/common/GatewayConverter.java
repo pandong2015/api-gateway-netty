@@ -7,6 +7,9 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * @author pandong
+ */
 public class GatewayConverter implements Converter {
   public static final String ROOT_NAME_GATEWAY = "gateway";
   public static final String NODE_NAME_SERVICES = "services";

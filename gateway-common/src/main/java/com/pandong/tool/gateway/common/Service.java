@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * @author pandong
+ */
+
 @Data
 public class Service {
   public enum ServiceType{

@@ -14,8 +14,8 @@ public class Service {
   public enum ServiceType{
     HTTP
   }
-  private long serviceId;
-  private String serviceName;
+  private long id;
+  private String name;
   private String domain;
   private int proxyPort;
   private String heathCheckUrl;

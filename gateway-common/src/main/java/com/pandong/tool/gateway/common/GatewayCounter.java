@@ -19,7 +19,7 @@ public class GatewayCounter {
 
   public static long getServiceRequestCounter(Service service) {
     Map<String, AtomicLong> serviceRequestCounterMap = COUNTER_CACHE.map(CounterName.CACHE_NAME_SERVICE_REQUEST_COUNTER);
-    String key = String.format(CounterName.COUNTER_NAME_SERVICE_REQUEST, service.getServiceName());
+    String key = String.format(CounterName.COUNTER_NAME_SERVICE_REQUEST, service.getName());
     if (!serviceRequestCounterMap.containsKey(key)) {
       serviceRequestCounterMap.put(key, new AtomicLong(0));
     }
@@ -36,7 +36,7 @@ public class GatewayCounter {
 
   public static void urlCount(Service service, String uri) {
     Map<String, AtomicLong> urlMap = COUNTER_CACHE.map(CounterName.CACHE_NAME_SERVICE_URL_COUNTER);
-    String key = String.format(CounterName.COUNTER_NAME_SERVICE_URL, service.getServiceName(), uri);
+    String key = String.format(CounterName.COUNTER_NAME_SERVICE_URL, service.getName(), uri);
     if (!urlMap.containsKey(key)) {
       urlMap.put(key, new AtomicLong());
     }

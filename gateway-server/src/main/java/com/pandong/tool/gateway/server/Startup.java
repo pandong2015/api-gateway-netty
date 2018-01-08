@@ -31,7 +31,7 @@ public class Startup {
         configPath = commandLine.getOptionValue("f");
         gateway = Global.readConfig();
       } else {
-        configPath = Global.CONFIG_NAME;
+        configPath = Global.CONFIG_SERVER_NAME;
         gateway = Global.readConfig();
       }
       log.info("load config file [" + configPath + "] success.");

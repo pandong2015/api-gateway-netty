@@ -1,0 +1,22 @@
+syntax = "proto2";
+package netty;
+option java_package = "com.pandong.tool.gateway.common.model";
+option java_outer_classname = "GatewayProto";
+
+enum OperationType {
+    HEARTBEAT = 0;
+    REGISTER = 1;
+}
+
+message Transfer {
+    optional int64 request_id = 1 [default = 0];
+    required int64 node_id = 2;
+    required string node_host = 3;
+    required int32 node_port = 4;
+    optional string service_name = 5;
+    optional string service_host = 6;
+    optional int64 service_id = 7;
+    required OperationType operation = 8;
+    optional string signature = 9;
+    optional bytes data = 10;
+}

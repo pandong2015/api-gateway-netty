@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<client>
+    <gateway>
+        <node host="192.168.164.23" port="10010"/>
+    </gateway>
+    <service>
+        <node host="192.168.164.23" port="10010" serviceName=""/>
+    </service>
+</client>

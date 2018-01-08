@@ -11,9 +11,10 @@ import java.util.List;
  */
 @Data
 public class Gateway {
+  private Node gateway;
   private List<Service> services = Lists.newArrayList();
 
-  public void addNodeGroup(Service service) {
+  public void addService(Service service) {
     services.add(service);
   }
 }

@@ -1,4 +1,4 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model;
 
 import com.pandong.tool.gateway.common.model.GatewayProto;
 import lombok.Builder;

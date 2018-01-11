@@ -1,5 +1,6 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model.converter;
 
+import com.pandong.tool.gateway.common.model.Gateway;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

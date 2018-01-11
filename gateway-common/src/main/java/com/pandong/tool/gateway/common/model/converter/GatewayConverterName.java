@@ -1,4 +1,4 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model.converter;
 /**
  * @author pandong
  */
@@ -10,10 +10,15 @@ public interface GatewayConverterName {
   String NODE_NAME_NODES = "nodes";
   String NODE_NAME_NODE = "node";
 
+  String NODE_NAME_ROOT = "ROOT";
+  String NODE_NAME_HEARTBEAT = "heartbeat";
+
   String NODE_NAME_RESPONSE = "response";
 
+  String ATTRIBUT_NAME_VALUE = "value";
+  String ATTRIBUT_NAME_TIMESTAMP = "timestamp";
   String ATTRIBUT_NAME_SERVERID = "id";
-  String ATTRIBUT_NAME_SERVERNAME = "name";
+  String ATTRIBUT_NAME_NAME = "name";
   String ATTRIBUT_NAME_SERVERDOMAIN = "domain";
   String ATTRIBUT_NAME_SERVERTYPE = "type";
   String ATTRIBUT_NAME_PROXYPORT = "proxyPort";

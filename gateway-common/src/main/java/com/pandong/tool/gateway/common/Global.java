@@ -2,18 +2,26 @@ package com.pandong.tool.gateway.common;
 
 import com.google.common.collect.Maps;
 import com.pandong.common.units.Cache;
+import com.pandong.tool.gateway.common.model.Gateway;
+import com.pandong.tool.gateway.common.model.GatewayClient;
+import com.pandong.tool.gateway.common.model.Heartbeat;
+import com.pandong.tool.gateway.common.model.converter.GatewayClientConverter;
+import com.pandong.tool.gateway.common.model.converter.GatewayConverter;
+import com.pandong.tool.gateway.common.model.converter.HeartbeatConverter;
+import com.pandong.tool.gateway.common.model.converter.OperateResponseConverter;
 import com.thoughtworks.xstream.XStream;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Map;
 
-import static com.pandong.tool.gateway.common.GatewayConverterName.NODE_NAME_CLIENT;
-import static com.pandong.tool.gateway.common.GatewayConverterName.NODE_NAME_GATEWAY;
+import static com.pandong.tool.gateway.common.model.converter.GatewayConverterName.*;
 
 /**
  * @author pandong
  */
 public class Global {
+  public static final Charset DEFULT_CHARSET = Charset.forName("UTF-8");
   private static final XStream xstream = new XStream();
   public static final String USER_HOME = System.getProperty("user.home");
   public static final String WORK_SPACE = USER_HOME + File.separator + ".gateway";
@@ -28,9 +36,11 @@ public class Global {
     xstream.autodetectAnnotations(true);
     xstream.alias(NODE_NAME_GATEWAY, Gateway.class);
     xstream.alias(NODE_NAME_CLIENT, GatewayClient.class);
+    xstream.alias(NODE_NAME_ROOT, Heartbeat.class);
     xstream.registerConverter(new GatewayConverter());
     xstream.registerConverter(new GatewayClientConverter());
     xstream.registerConverter(new OperateResponseConverter());
+    xstream.registerConverter(new HeartbeatConverter());
 
     JMX_OBJECT_ATTRIBUTE_MAP.put(Heartbeat.OBJECT_NAME_CLASS_LOADING, Heartbeat.ATTRIBUTE_NAMES_CLASS_LOADING);
     JMX_OBJECT_ATTRIBUTE_MAP.put(Heartbeat.OBJECT_NAME_CODE_CACHE_MANAGER, Heartbeat.ATTRIBUTE_NAMES_CODE_CACHE_MANAGER);
@@ -62,7 +72,7 @@ public class Global {
   }
 
   public static GatewayClient paresClientConfig(String config) {
-    return (GatewayClient) xstream.fromXML(config, new GatewayClient());
+    return string2Obj(config, new GatewayClient());
   }
 
   public static void writeConfig(Gateway gateway) throws IOException {
@@ -73,6 +83,10 @@ public class Global {
 
   public static <T> String object2Xml(T t) {
     return xstream.toXML(t);
+  }
+
+  public static <T> T string2Obj(String xml, T t){
+    return (T)xstream.fromXML(xml, t);
   }
 
 }

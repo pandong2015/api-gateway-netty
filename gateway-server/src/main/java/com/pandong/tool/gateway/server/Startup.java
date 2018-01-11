@@ -1,6 +1,6 @@
 package com.pandong.tool.gateway.server;
 
-import com.pandong.tool.gateway.common.Gateway;
+import com.pandong.tool.gateway.common.model.Gateway;
 import com.pandong.tool.gateway.common.Global;
 import com.pandong.tool.gateway.server.utils.ServerUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class Startup {
 
       if (commandLine.hasOption("f")) {
         configPath = commandLine.getOptionValue("f");
-        gateway = Global.readConfig();
+        gateway = Global.readConfig(configPath);
       } else {
         configPath = Global.CONFIG_SERVER_NAME;
         gateway = Global.readConfig();

@@ -1,7 +1,7 @@
 package com.pandong.tool.gateway.server.handlers;
 
-import com.pandong.tool.gateway.common.Node;
-import com.pandong.tool.gateway.common.Service;
+import com.pandong.tool.gateway.common.model.Node;
+import com.pandong.tool.gateway.common.model.Service;
 import com.pandong.tool.gateway.server.utils.ServerUtil;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
@@ -41,5 +41,11 @@ public class ProxyResponseChannelHandler extends SimpleChannelInboundHandler<Htt
         proxyChannel.writeAndFlush(((HttpContent) msg).copy());
       }
     }
+  }
+
+  @Override
+  public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    ctx.channel().attr(ServerUtil.ChannelAttribute.PROXY_CHANNEL).set(null);
+    super.channelInactive(ctx);
   }
 }

@@ -1,9 +1,9 @@
 package com.pandong.tool.gateway.common.test;
 
-import com.pandong.tool.gateway.common.Gateway;
+import com.pandong.tool.gateway.common.model.Gateway;
 import com.pandong.tool.gateway.common.Global;
-import com.pandong.tool.gateway.common.Node;
-import com.pandong.tool.gateway.common.Service;
+import com.pandong.tool.gateway.common.model.Node;
+import com.pandong.tool.gateway.common.model.Service;
 
 import java.io.IOException;
 

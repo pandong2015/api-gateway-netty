@@ -1,4 +1,4 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model;
 
 import lombok.Data;
 

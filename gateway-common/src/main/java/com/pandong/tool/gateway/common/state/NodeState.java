@@ -1,6 +1,6 @@
 package com.pandong.tool.gateway.common.state;
 
-import com.pandong.tool.gateway.common.Node;
+import com.pandong.tool.gateway.common.model.Node;
 import lombok.Data;
 
 /**

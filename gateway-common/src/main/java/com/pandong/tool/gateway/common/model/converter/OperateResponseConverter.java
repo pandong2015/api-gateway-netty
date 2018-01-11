@@ -1,7 +1,9 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model.converter;
 
 import com.pandong.common.units.StringUtils;
 import com.pandong.tool.gateway.common.model.GatewayProto;
+import com.pandong.tool.gateway.common.model.OperateResonse;
+import com.pandong.tool.gateway.common.model.converter.GatewayConverterName;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

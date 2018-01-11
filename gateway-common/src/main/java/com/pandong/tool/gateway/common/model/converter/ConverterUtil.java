@@ -1,6 +1,8 @@
-package com.pandong.tool.gateway.common;
+package com.pandong.tool.gateway.common.model.converter;
 
 import com.pandong.common.units.StringUtils;
+import com.pandong.tool.gateway.common.model.Node;
+import com.pandong.tool.gateway.common.model.Service;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
@@ -11,7 +13,7 @@ public class ConverterUtil {
   public static void marshalService(HierarchicalStreamWriter writer, Service service) {
     writer.startNode(GatewayConverterName.NODE_NAME_SERVICE);
     writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_SERVERID, String.valueOf(service.getId()));
-    writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_SERVERNAME, service.getName());
+    writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_NAME, service.getName());
     writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_SERVERTYPE, service.getType().name());
     writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_PROXYPORT, String.valueOf(service.getProxyPort()));
     writer.addAttribute(GatewayConverterName.ATTRIBUT_NAME_HEATHCHECKURL, service.getHeathCheckUrl());
@@ -48,7 +50,7 @@ public class ConverterUtil {
         service.setType(Service.ServiceType.HTTP);
       }
       service.setHeathCheckUrl(reader.getAttribute(GatewayConverterName.ATTRIBUT_NAME_HEATHCHECKURL));
-      service.setName(reader.getAttribute(GatewayConverterName.ATTRIBUT_NAME_SERVERNAME));
+      service.setName(reader.getAttribute(GatewayConverterName.ATTRIBUT_NAME_NAME));
       service.setDomain(reader.getAttribute(GatewayConverterName.ATTRIBUT_NAME_SERVERDOMAIN));
       while (reader.hasMoreChildren()) {
         reader.moveDown();

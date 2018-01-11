@@ -1,17 +1,14 @@
 package com.pandong.tool.gateway.server.utils;
 
-import com.pandong.tool.gateway.common.Gateway;
+import com.pandong.tool.gateway.common.model.Gateway;
 import com.pandong.tool.gateway.common.Global;
-import com.pandong.tool.gateway.common.Node;
-import com.pandong.tool.gateway.common.Service;
+import com.pandong.tool.gateway.common.model.Node;
+import com.pandong.tool.gateway.common.model.Service;
 import com.pandong.tool.gateway.common.exceptions.GatewayException;
 import com.pandong.tool.gateway.common.exceptions.ServiceNodeExistException;
 import com.pandong.tool.gateway.common.exceptions.ServicePortBindException;
 import com.pandong.tool.gateway.common.model.GatewayProto;
-import com.pandong.tool.gateway.server.handlers.GatewayServerChannelHandler;
-import com.pandong.tool.gateway.server.handlers.MetricsHandler;
-import com.pandong.tool.gateway.server.handlers.ProxyChannelHandler;
-import com.pandong.tool.gateway.server.handlers.ProxyResponseChannelHandler;
+import com.pandong.tool.gateway.server.handlers.*;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -34,7 +31,6 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -55,21 +51,8 @@ public class ServerUtil {
 
   public static void cacheService(Service service) {
     Map<String, Service> serviceMap = Global.GATEWAY_CACHE.map(CacheName.CACHE_NAME_SERVICE_MAP);
-
-    Map<String, Node> serviceNodeMap = Global.GATEWAY_CACHE.map(CacheName.CACHE_NAME_SERVICE_NODE_MAP);
     serviceMap.put(service.getName(), service);
-    List<Node> nodeList = Global.GATEWAY_CACHE.list(CacheName.CACHE_NAME_SERVICE_NODE_LIST + service.getName());
     service.getNodes().forEach(node -> refreshServiceNode(service, node));
-//    nodeList.sort(new Comparator<Node>() {
-//      @Override
-//      public int compare(Node node, Node t1) {
-//        int ipresult = node.getHost().compareTo(t1.getHost());
-//        if (ipresult == 0) {
-//          return ((Integer) node.getPort()).compareTo(t1.getPort());
-//        }
-//        return ipresult;
-//      }
-//    });
   }
 
   public static void refreshServiceNode(Service service, Node node) {
@@ -261,6 +244,9 @@ public class ServerUtil {
   }
 
   public static Node loadBalancer(long requestTimes, List<Node> nodeList) {
+    if (nodeList == null || nodeList.isEmpty()) {
+      return null;
+    }
     long index = requestTimes % nodeList.size();
     return nodeList.get((int) index);
   }
@@ -270,6 +256,10 @@ public class ServerUtil {
     AttributeKey<Channel> REQUEST_CHANNEL = AttributeKey.newInstance("request_channel");
 
     AttributeKey<Long> REQUEST_TIME_START = AttributeKey.newInstance("request_time_start");
+
+    AttributeKey<Long> REQUEST_TIMES = AttributeKey.newInstance("request_times");
+    AttributeKey<Long> REQUEST_ID = AttributeKey.newInstance("request_id");
+    AttributeKey<String> REQUEST_URI = AttributeKey.newInstance("request_uri");
 
     AttributeKey<Service> SERVICE = AttributeKey.newInstance("service");
     AttributeKey<Node> NODE = AttributeKey.newInstance("node");
